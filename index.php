@@ -48,8 +48,18 @@ session_start();
 					}
 				}
 			}
+			$unique_key2 = [];
+			foreach($unique_key1 as $key1 => $value1){
+				foreach($value1 as $value2){
+					foreach($unique_unit_2 as $value_unit_2){
+						if($value2[0] == $value_unit_2){
+							$unique_key2[$key1][$value2[0]][] = $value2[1];
+						}
+					}
+				}
+			}
 			echo "<pre>";
-			print_r($unique_key1);
+			print_r($unique_key2);
 			echo "</pre>";
 		}
 		?>
