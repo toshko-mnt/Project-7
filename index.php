@@ -58,8 +58,18 @@ session_start();
 					}
 				}
 			}
+			$unique_key3 = [];
+			foreach($unique_key2 as $key2 => $value3){
+				foreach($value3 as $key3 => $value4){
+					foreach($value4 as $value5){
+						$unique_key3[$key2][$key3][$value5] = $value5;
+					}	
+				}
+			}
+			$output_calls = [];
+			$output_calls = $unique_key3;
 			echo "<pre>";
-			print_r($unique_key2);
+			print_r($output_calls);
 			echo "</pre>";
 		}
 		?>
