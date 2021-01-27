@@ -24,15 +24,33 @@ session_start();
 			}
 			if(isset($_SESSION['data'])){		
 				$input_calls = [];
+				$unit_1 = [];
+				$unit_2 = [];
+				$unique_unit_1 = [];
+				$unique_unit_2 = [];
 				for($i = 0; $i < count($_SESSION['data']); $i++){
 					$row_sess = $_SESSION['data'][$i];
 					$explode_row = explode('/' , $row_sess);
 					$input_calls[$i] = [$explode_row[1],$explode_row[2],$explode_row[3]];
+					$unit_1[$i] = $explode_row[1];
+					$unit_2[$i] = $explode_row[2];
+					$unique_unit_1 = array_unique($unit_1);
+					$unique_unit_2 = array_unique($unit_2);
 				}
-				echo "<pre>";
-				print_r($input_calls);
-				echo "</pre>";
 			}
+		}
+		if(isset($input_calls)){
+			$unique_key1 = [];
+			foreach($input_calls as $value){
+				foreach($unique_unit_1 as $value_unit_1){
+					if($value[0] == $value_unit_1){
+						$unique_key1[$value[0]][] = [$value[1],$value[2]];
+					}
+				}
+			}
+			echo "<pre>";
+			print_r($unique_key1);
+			echo "</pre>";
 		}
 		?>
 	</body>
