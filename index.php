@@ -14,7 +14,6 @@ session_start();
 			<input type="submit" name="submit" value="Send" />
 		</form>
 		<?php
-		// SET SESSION	
 		if(isset($_POST['submit'])){
 			$input_data = $_POST['input_data'];
 			if(!empty($input_data)){ 
@@ -23,13 +22,18 @@ session_start();
 			else{
 				echo 'input data is empty';
 			}
+			if(isset($_SESSION['data'])){		
+				$input_calls = [];
+				for($i = 0; $i < count($_SESSION['data']); $i++){
+					$row_sess = $_SESSION['data'][$i];
+					$explode_row = explode('/' , $row_sess);
+					$input_calls[$i] = [$explode_row[1],$explode_row[2],$explode_row[3]];
+				}
+				echo "<pre>";
+				print_r($input_calls);
+				echo "</pre>";
+			}
 		}
-		$input_calls = [];
-		for($i = 0; $i < count($_SESSION['data']); $i++){
-			$row_sess = $_SESSION['data'][$i];
-			$explode_row = explode('/' , $row_sess);
-			$input_calls[$i] = [$explode_row[1],$explode_row[2],$explode_row[3]];
-		}	
 		?>
 	</body>
 </html>
