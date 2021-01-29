@@ -17,7 +17,7 @@ session_start();
 		include 'includes/chek_input.php';
 		include 'includes/create_db.php';
 		include 'includes/add_output.php';
-
+		include 'includes/print_output.php';
 		?>
 	</body>
 </html>
