@@ -14,14 +14,8 @@ session_start();
 			<input type="submit" name="submit" value="Send" />
 		</form>
 		<?php
-		if(isset($_POST['submit'])){
-			$input_data = $_POST['input_data'];
-			if(!empty($input_data)){ 
-				$_SESSION['data'][] = $input_data;
-			}
-			else{
-				echo 'input data is empty';
-			}
+		include 'includes/chek_input.php';
+		
 			if(isset($_SESSION['data'])){		
 				$input_calls = [];
 				$unit_1 = [];
@@ -38,7 +32,7 @@ session_start();
 					$unique_unit_2 = array_unique($unit_2);
 				}
 			}
-		}
+	
 		if(isset($input_calls)){
 			$unique_key1 = [];
 			foreach($input_calls as $value){
