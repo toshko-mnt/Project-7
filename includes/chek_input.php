@@ -2,7 +2,7 @@
 $chek_input = 'chek is not valid';
 if(isset($_POST['submit'])){
 	$input_data = $_POST['input_data'];
-	if(preg_match('/^[a-z0-9\/]+$/',$input_data)) {
+	if(preg_match('/^[\/]+[a-z0-9\/]+$/',$input_data)) {
 		if(strlen($input_data) >= 6 && strlen($input_data) <= 50){
 			$chek_input = 'chek is valid';
 		}else{
